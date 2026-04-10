@@ -5,13 +5,13 @@ FROM node:20-alpine
 WORKDIR /app
 
 # copia arquivos de dependencia
-COPY package*.json ./
+COPY ./app/package*.json ./
 
 # instala as dependencias
 RUN npm install
 
 # copia o restante do codigo da aplicacao
-COPY . .
+COPY ./app .
 
 # expoe a porta utilizada pela aplicacao
 EXPOSE 3000

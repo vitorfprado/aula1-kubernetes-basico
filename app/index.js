@@ -12,7 +12,7 @@ const html = `
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello World Time Dataside</title>
+    <title>Hello World Dataside Team</title>
     <style>
       :root {
         --dataside-blue: #0d6efd;
@@ -71,7 +71,7 @@ const html = `
   <body>
     <main class="card">
       <img src="/logo-dataside.avif" alt="Logo Dataside" class="logo" />
-      <h1>Hello World <span class="highlight">Time Dataside</span></h1>
+      <h1>Hello World <span class="highlight">Dataside Team</span></h1>
       <p>Mini app Node.js para seu laboratorio de Docker e Kubernetes.</p>
     </main>
   </body>
