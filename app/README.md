@@ -11,21 +11,9 @@ Mini aplicacao Node.js para laboratorio com Docker e Kubernetes.
 
 ## Pre-requisitos
 
-- Node.js 20+ (para rodar localmente)
-- Docker Desktop (para build e execucao em container)
+- Docker Desktop (ou Docker Engine + CLI) para build e execucao em container
 
-## Rodando localmente (sem Docker)
-
-```bash
-npm install
-npm start
-```
-
-Acesse:
-
-- [http://localhost:3000](http://localhost:3000)
-
-## Rodando com Docker
+## Como rodar (Docker)
 
 ### 1) Build da imagem
 
