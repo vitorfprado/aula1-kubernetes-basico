@@ -1,0 +1,12 @@
+{
+  "name": "hello-world-lab",
+  "version": "1.0.0",
+  "description": "Mini aplicacao Node.js para laboratorio Docker/Kubernetes",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
