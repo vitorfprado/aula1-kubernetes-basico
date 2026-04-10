@@ -30,13 +30,13 @@ Acesse:
 ### 1) Build da imagem
 
 ```bash
-docker build -t hello-node-lab .
+docker build -t aula1-dataside-lab .
 ```
 
 ### 2) Executar container
 
 ```bash
-docker run --rm -p 3000:3000 hello-node-lab
+docker run --rm -p 3000:3000 --name aula1-dataside-container aula1-dataside-lab
 ```
 
 ### 3) Testar aplicacao
@@ -63,6 +63,12 @@ Parar container em execucao:
 
 ```bash
 docker stop <container_id>
+```
+
+Acessar o terminal do container em execucao:
+
+```bash
+docker exec -it aula1-dataside-container sh
 ```
 
 ## Observacoes para laboratorio Kubernetes
