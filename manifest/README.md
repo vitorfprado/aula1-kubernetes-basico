@@ -3,7 +3,7 @@
 Este projeto mostra uma estrutura basica de manifestos Kubernetes com:
 
 - `Deployment` (com `resources` e `probes`)
-- `Service` (NodePort)
+- `Service` (ClusterIP)
 - `ConfigMap`
 - `HPA` (Horizontal Pod Autoscaler)
 - `Namespace`
@@ -64,7 +64,7 @@ kubectl get hpa -n aula-k8s
 Se quiser detalhes do pod:
 
 ```powershell
-kubectl describe pod -n aula-k8s -l app=exemplo
+kubectl describe pod -n aula-k8s -l app=aula-k8s
 ```
 
 ## 4) Testar acesso a aplicacao
@@ -72,7 +72,7 @@ kubectl describe pod -n aula-k8s -l app=exemplo
 Opcao simples para aula (recomendada): `port-forward`
 
 ```powershell
-kubectl port-forward -n aula-k8s svc/exemplo-service 8080:80
+kubectl port-forward -n aula-k8s svc/aula-k8s-service 8080:80
 ```
 
 Abra no navegador:
@@ -101,23 +101,23 @@ kubectl top pods -n aula-k8s
 
 ## 6) Gerar carga para demonstrar autoscaling
 
-Crie um pod temporario para fazer requisicoes:
+Recomendacao para laboratorio: usar o `hey` em um pod temporario.
+E simples, nao exige instalacao local e gera carga concorrente.
+
+### Opcao recomendada: `hey` (mini load test)
+
+Rodar carga por 2 minutos com 50 workers concorrentes:
 
 ```powershell
-kubectl run load-generator --rm -it -n aula-k8s --image=busybox -- /bin/sh
+kubectl run hey --rm -it -n aula-k8s --image=williamyeh/hey -- -z 2m -c 50 http://aula-k8s-service.aula-k8s.svc.cluster.local
 ```
 
-Dentro do shell do pod:
-
-```sh
-while true; do wget -q -O- http://exemplo-service.aula-k8s.svc.cluster.local; done
-```
-
-Em outro terminal:
+Enquanto isso, acompanhe o escalonamento:
 
 ```powershell
 kubectl get hpa -n aula-k8s -w
 kubectl get pods -n aula-k8s -w
+kubectl top pods -n aula-k8s
 ```
 
 ## 7) Limpeza do ambiente

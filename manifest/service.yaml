@@ -1,16 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: exemplo-service
+  name: aula-k8s-service
   namespace: aula-k8s
   labels:
-    app: exemplo
+    app: aula-k8s
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
-    app: exemplo
+    app: aula-k8s
   ports:
     - name: http
       port: 80
-      targetPort: 80
-      nodePort: 30080
+      targetPort: 3000

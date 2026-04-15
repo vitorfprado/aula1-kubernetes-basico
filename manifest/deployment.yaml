@@ -1,28 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: exemplo-deployment
+  name: aula-k8s-deployment
   namespace: aula-k8s
   labels:
-    app: exemplo
+    app: aula-k8s
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      app: exemplo
+      app: aula-k8s
   template:
     metadata:
       labels:
-        app: exemplo
+        app: aula-k8s
     spec:
       containers:
         - name: hello-app
-          image: nginxdemos/hello:plain-text
+          image: vitorfprado/aula1-dataside-lab:latest
+          imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 80
+            - containerPort: 3000
           envFrom:
             - configMapRef:
-                name: exemplo-config
+                name: aula-k8s-config
           resources:
             requests:
               cpu: "100m"
@@ -33,7 +34,7 @@ spec:
           readinessProbe:
             httpGet:
               path: /
-              port: 80
+              port: 3000
             initialDelaySeconds: 5
             periodSeconds: 10
             timeoutSeconds: 2
@@ -41,7 +42,7 @@ spec:
           livenessProbe:
             httpGet:
               path: /
-              port: 80
+              port: 3000
             initialDelaySeconds: 15
             periodSeconds: 20
             timeoutSeconds: 2
@@ -49,6 +50,6 @@ spec:
           startupProbe:
             httpGet:
               path: /
-              port: 80
+              port: 3000
             failureThreshold: 30
             periodSeconds: 2

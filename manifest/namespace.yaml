@@ -3,4 +3,4 @@ kind: Namespace
 metadata:
   name: aula-k8s
   labels:
-    app: exemplo
+    app: aula-k8s

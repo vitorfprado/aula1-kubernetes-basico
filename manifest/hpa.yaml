@@ -1,17 +1,17 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: exemplo-hpa
+  name: aula-k8s-hpa
   namespace: aula-k8s
   labels:
-    app: exemplo
+    app: aula-k8s
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: exemplo-deployment
-  minReplicas: 1
-  maxReplicas: 3
+    name: aula-k8s-deployment
+  minReplicas: 3
+  maxReplicas: 10
   metrics:
     - type: Resource
       resource:
